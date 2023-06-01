@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/src/stylehotel.css">
+</head>
+<title class=" text-black"> Hotel Registration From </title>
+<body>
+  <div id="reg" class="container" style="height: auto; background-color: rgb(13 110 253 / 25%);">
+    <div class="row">
+      <div class="col-lg-12 col-sm-12 col-md-12 ">
+        <h1 class="text-center text-dark">Hotel Registration</h1>
+      </div>
+    </div>
+    <div class="container-fluid ">
+      <form action="" class="container">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-12 bg-dark">
+              <h3 class=" text-center text-white">Customer Details</h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class=" col-lg-6 text-center"> <label for="">Customer Name</label></div>
+            <div class=" col-lg-6"> <input type="text" name="" id="cName" class="form form-control" /></div>
+          </div>
+          <div class="row">
+            <div class=" col-lg-6 text-center"> <label for="">Check In Date</label></div>
+            <div class=" col-lg-6"><input type="date" name="" id="date" class="form form-control" /></div>
+          </div>
+          <div class="row">
+            <div class=" col-lg-6 text-center"> <label for="">Total No Of Days</label></div>
+            <div class=" col-lg-6"> <input type="number" name="" id="noOfdays" class="form form-control" /></div>
+          </div>
+          <div class="row">
+            <div class=" col-lg-6 text-center"> <label for="">Total No Of Person</label></div>
+            <div class=" col-lg-6"> <input type="number" name="" id="noOfperson" class="form form-control" /></div>
+          </div>
+        </div>
+        <div class=" container-fluid">
+          <div class="row">
+            <div class="col-lg-12 bg-dark">
+              <h3 class=" text-center text-white">Select Room</h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <figure>
+                <img src="/images/duplex.jpg " alt="delux" width="100%" height="300" />
+                <caption>
+                  <div class=" container">
+                    <div class="row"><input class="custom-radio" type="radio" name="roomPrice" id="delux"
+                        value="2000" />
+                      <label>Deluxe Room [2000/Day]</label></div>
+                  </div>
+                </caption>
+              </figure>
+            </div>
+            <div class="col-lg-6">
+              <figure>
+                <img src="/images/single.jpg" alt="deluxe" width="100%" height="300" />
+                <caption>
+                  <div class=" container">
+                    <div class="row">
+                      <input class="custom-radio" type="radio" name="roomPrice" id="suite" value="4000" />
+                      <label>Suite Room [4000/Day]</label>
+                    </div>
+                  </div>
+                </caption>
+              </figure>
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-12 bg-dark">
+              <h3 class=" text-center text-white ">Amenities</h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <figure>
+                <img src="/images/loker.jpg" alt="locker" width="100%" height="300" />
+                <caption>
+                  <div class=" container">
+                    <div class="row"><input class="checkbox" type="checkbox" name="" id="locker" value="500" />
+                      <label>Locker [500/Day]</label></div>
+                  </div>
+                </caption>
+              </figure>
+            </div>
+            <div class="col-lg-6">
+              <figure>
+                <img src="/images/ac.jpg" alt="ac" width="100%" height="300" />
+                <caption>
+                  <div class=" container">
+                    <div class="row">
+                      <input class="checkbox" type="checkbox" name="" id="ac" value="500" />
+                      <label>AC [500/Day]</label>
+                    </div>
+                  </div>
+                </caption>
+              </figure>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 bg-dark ">
+              <h3 class=" text-center text-white ">Advance</h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class=" col-lg-6 text-center"> <label for="">Pay</label></div>
+            <div class=" col-lg-6"> <input type="number" name="" id="advancePaid" class="form form-control"
+                oninput="activeReg()" /></div>
+          </div>
+        </div>
+        <div class=" container">
+          <div class="row">
+            <div class="col-lg-12 text-center">
+              <input data-bs-target="#bookSum" data-bs-toggle="modal" id="btnReg" type="button" value="Register" class="btn btn-danger " onclick="regClick()"/>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!--Summary Coding Start-->
+    <!-- Modal -->
+    <div class="modal fade" id="bookSum"  >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <dl>
+                <dt>Customer Name</dt>
+                <dd id="customerName"></dd>
+                <dt>Check in Date</dt>
+                <dd id="chInDate"></dd>
+                <dt>Total no of Days</dt>
+                <dd id="totalDays"></dd>
+                <dt>Total no of Person</dt>
+                <dd id="totalPerson"></dd>
+                <dt>Room Type</dt>
+                <dd id="selectedRoom"></dd>
+                <dt>Room Aminities</dt>
+                <dd id="amini"></dd>
+                <dt>Room Advance Amount</dt>
+                <dd id="adPaid"></dd>
+                <dt>Totel Amount</dt>
+                <dd id="balAmount"></dd>
+            </dl>
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="closeClick()" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Ok</button>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- 
+
+
+
+  <div id="bookSum" class="container" style="display: none;">
+    <div class="frm">
+      <h1 class="text text-info text-center">Booking Summary</h1>
+      
+      <div class=" container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <button class="btn btn-danger" >Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <script src="/src/Scripts/hoteltask.js"></script>
+  <script src="/node_modules/jquery/dist/jquery.js"></script>
+  <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>
